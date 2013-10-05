@@ -28,9 +28,10 @@ THE SOFTWARE.
 class CCGestureRecognizer : public cocos2d::CCLayer
 {
 public:
+//    CCGestureRecognizer();
     CCGestureRecognizer();
     ~CCGestureRecognizer();
-    void setTarget(cocos2d::CCObject * tar, cocos2d::SEL_CallFuncO sel);
+    void setTarget(cocos2d::CCObject * tar, int sel);
     
     //setParent is called after the layer is added as a child
     virtual void setParent(cocos2d::CCNode*p);
@@ -57,7 +58,7 @@ protected:
     //NOTE: subclasses must check the value and implement it correctly
     CC_SYNTHESIZE(bool, cancelsTouchesInView, CancelsTouchesInView);
 private:
-    cocos2d::SEL_CallFuncO selector;
+    int selector;
     cocos2d::CCObject * target;
     cocos2d::CCTouchDispatcher * dispatcher;
 };

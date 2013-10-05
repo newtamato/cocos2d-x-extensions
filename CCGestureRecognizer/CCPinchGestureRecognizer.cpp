@@ -22,6 +22,7 @@ THE SOFTWARE.
 
 #include "CCPinchGestureRecognizer.h"
 
+
 USING_NS_CC;
 
 bool CCPinchGestureRecognizer::init()

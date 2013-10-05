@@ -21,8 +21,10 @@ THE SOFTWARE.
 ****************************************************************************/
 
 #include "CCGestureRecognizer.h"
-
+#include <cxxabi.h>
+#include "CCTapGestureRecognizer.h"
 USING_NS_CC;
+
 
 CCGestureRecognizer::CCGestureRecognizer()
 {
@@ -36,14 +38,22 @@ CCGestureRecognizer::CCGestureRecognizer()
 
 CCGestureRecognizer::~CCGestureRecognizer()
 {
+   
     dispatcher->removeDelegate(this);
+
 }
 
-void CCGestureRecognizer::setTarget(CCObject * tar, SEL_CallFuncO sel)
+void CCGestureRecognizer::setTarget(CCObject * tar, int sel)
 {
     target = tar;
     selector = sel;
 }
+
+//void CCGestureRecognizer::setTarget(CCObject * tar, SEL_CallFuncO sel)
+//{
+//    target = tar;
+//    selector = sel;
+//}
 
 float CCGestureRecognizer::distanceBetweenPoints(CCPoint p1, CCPoint p2)
 {
@@ -79,7 +89,7 @@ CCSet * CCGestureRecognizer::createSetWithTouch(CCTouch * pTouch)
 
 void CCGestureRecognizer::registerWithTouchDispatcher()
 {
-    dispatcher->addTargetedDelegate(this, -256, false);
+    dispatcher->addTargetedDelegate(this, -256, true);
 }
 
 bool CCGestureRecognizer::isPositionBetweenBounds(CCPoint pos)
@@ -89,5 +99,18 @@ bool CCGestureRecognizer::isPositionBetweenBounds(CCPoint pos)
 
 void CCGestureRecognizer::gestureRecognized(cocos2d::CCObject * gesture)
 {
-    if (target && selector) (target->*selector)(gesture); //call selector
+//    if (target && selector) (target->*selector)(gesture); //call selector
+//      if (target && selector)
+//          selector->execute();
+
+    cocos2d::CCScriptEngineProtocol* pEngine = cocos2d::CCScriptEngineManager::sharedManager()->getScriptEngine();
+    const char* name = typeid(gesture).name();
+    const char* classname = typeid(CCTap).name();
+
+    printf("name is %s,%s",name,classname);
+
+    gesture =(CCTap*)gesture;
+    pEngine->executeEvent(selector,"event",gesture);
+
+    
 }
