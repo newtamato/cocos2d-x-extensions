@@ -21,7 +21,8 @@ THE SOFTWARE.
 ****************************************************************************/
 
 #include "CCLongPressGestureRecognizer.h"
-
+#include "cocos2d.h"
+using namespace cocos2d;
 USING_NS_CC;
 
 bool CCLongPressGestureRecognizer::init()

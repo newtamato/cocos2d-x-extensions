@@ -1,0 +1,35 @@
+
+
+class CCGestureRecognizer : public CCLayer
+{
+public:
+    CCGestureRecognizer();
+    ~CCGestureRecognizer();
+    void setTarget(CCObject * tar, int sel);
+    
+    //setParent is called after the layer is added as a child
+    virtual void setParent(CCNode*p);
+
+};
+
+class CCLongPress : public CCObject
+{
+public:
+    bool init() {return true;}
+    CCLongPress* create();
+    CCPoint location;
+};
+
+class CCLongPressGestureRecognizer : public CCGestureRecognizer
+{
+public:
+    bool init();
+    CCLongPressGestureRecognizer* create();
+    ~CCLongPressGestureRecognizer();
+    void timerDidEnd(float dt);
+    
+    virtual bool ccTouchBegan(CCTouch * pTouch, CCEvent * pEvent);
+    virtual void ccTouchMoved(CCTouch * pTouch, CCEvent * pEvent){};
+    virtual void ccTouchEnded(CCTouch * pTouch, CCEvent * pEvent);
+
+};

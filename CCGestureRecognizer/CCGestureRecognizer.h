@@ -22,45 +22,45 @@ THE SOFTWARE.
 
 #ifndef CCGestureRecognizer_h
 #define CCGestureRecognizer_h
-
 #include "cocos2d.h"
+using namespace cocos2d;
 
-class CCGestureRecognizer : public cocos2d::CCLayer
+class CCGestureRecognizer: public CCLayer
 {
 public:
 //    CCGestureRecognizer();
     CCGestureRecognizer();
     ~CCGestureRecognizer();
-    void setTarget(cocos2d::CCObject * tar, int sel);
+    void setTarget(CCObject * tar, int sel);
     
     //setParent is called after the layer is added as a child
-    virtual void setParent(cocos2d::CCNode*p);
+    virtual void setParent(CCNode*p);
 protected:
-    cocos2d::CCRect frame;
+    CCRect frame;
     bool isRecognizing;
     
-    void gestureRecognized(cocos2d::CCObject * gesture);
-    void stopTouchesPropagation(cocos2d::CCSet * pTouches, cocos2d::CCEvent * pEvent);
+    void gestureRecognized(CCObject * gesture);
+    void stopTouchesPropagation(CCSet * pTouches, CCEvent * pEvent);
     
     //utility methods
-    bool isPositionBetweenBounds(cocos2d::CCPoint pos);
-    float distanceBetweenPoints(cocos2d::CCPoint p1, cocos2d::CCPoint p2);
-    cocos2d::CCSet * createSetWithTouch(cocos2d::CCTouch * pTouch);
+    bool isPositionBetweenBounds(CCPoint pos);
+    float distanceBetweenPoints(CCPoint p1, CCPoint p2);
+    CCSet * createSetWithTouch(CCTouch * pTouch);
     
     virtual void registerWithTouchDispatcher(void);
     
     //mandatory methods for subclasses
-    virtual bool ccTouchBegan(cocos2d::CCTouch * pTouch, cocos2d::CCEvent * pEvent)=0;
-    virtual void ccTouchMoved(cocos2d::CCTouch * pTouch, cocos2d::CCEvent * pEvent)=0;
-    virtual void ccTouchEnded(cocos2d::CCTouch * pTouch, cocos2d::CCEvent * pEvent)=0;
+    virtual bool ccTouchBegan(CCTouch * pTouch, CCEvent * pEvent)=0;
+    virtual void ccTouchMoved(CCTouch * pTouch, CCEvent * pEvent)=0;
+    virtual void ccTouchEnded(CCTouch * pTouch, CCEvent * pEvent)=0;
     
     //if gesture is correctly recognized, cancel touch over other views (default: false)
     //NOTE: subclasses must check the value and implement it correctly
     CC_SYNTHESIZE(bool, cancelsTouchesInView, CancelsTouchesInView);
 private:
     int selector;
-    cocos2d::CCObject * target;
-    cocos2d::CCTouchDispatcher * dispatcher;
+    CCObject * target;
+    CCTouchDispatcher * dispatcher;
 };
 
 #endif
