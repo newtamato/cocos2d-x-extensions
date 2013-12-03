@@ -92,7 +92,7 @@ static int tolua_CCGestureRecognizer_luabinding_CCGestureRecognizer_setTarget00(
  {
   CCGestureRecognizer* self = (CCGestureRecognizer*)  tolua_tousertype(tolua_S,1,0);
   CCObject* tar = ((CCObject*)  tolua_tousertype(tolua_S,2,0));
-     LUA_FUNCTION nHandler = (  toluafix_ref_function(tolua_S,2,0));
+     LUA_FUNCTION nHandler = (  toluafix_ref_function(tolua_S,3,0));
 #ifndef TOLUA_RELEASE
   if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setTarget'", NULL);
 #endif

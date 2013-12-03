@@ -49,6 +49,7 @@ void CCGestureRecognizer::setTarget(CCObject * tar, int sel)
 {
     target = tar;
     selector = sel;
+    printf("selector is %i",sel);
 }
 
 //void CCGestureRecognizer::setTarget(CCObject * tar, SEL_CallFuncO sel)

@@ -60,7 +60,7 @@ bool CCLongPressGestureRecognizer::ccTouchBegan(CCTouch * pTouch, CCEvent * pEve
     }
     
     currLocation = pTouch->getLocation();
-    if (!isPositionBetweenBounds(currLocation)) return false;
+//    if (!isPositionBetweenBounds(currLocation)) return false;
     
     currEvent = pEvent;
     currTouch = pTouch;
