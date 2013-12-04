@@ -52,11 +52,11 @@ void CCLongPressGestureRecognizer::timerDidEnd(float dt)
     stopGestureRecognition();
 }
 
-bool CCLongPressGestureRecognizer::ccTouchBegan(CCTouch * pTouch, CCEvent * pEvent)
+int CCLongPressGestureRecognizer::ccTouchBegan(CCTouch * pTouch, CCEvent * pEvent)
 {
     if (isRecognizing) {
         stopGestureRecognition();
-        return false;
+        return 0;
     }
     
     currLocation = pTouch->getLocation();
@@ -68,7 +68,7 @@ bool CCLongPressGestureRecognizer::ccTouchBegan(CCTouch * pTouch, CCEvent * pEve
     schedule(schedule_selector(CCLongPressGestureRecognizer::timerDidEnd), minimumPressDuration);
     
     isRecognizing = true;
-    return true;
+    return 1;
 }
 
 void CCLongPressGestureRecognizer::ccTouchEnded(CCTouch * pTouch, CCEvent * pEvent)

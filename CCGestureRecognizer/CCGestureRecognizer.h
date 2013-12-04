@@ -50,8 +50,8 @@ protected:
     virtual void registerWithTouchDispatcher(void);
     
     //mandatory methods for subclasses
-    virtual bool ccTouchBegan(CCTouch * pTouch, CCEvent * pEvent)=0;
-    virtual void ccTouchMoved(CCTouch * pTouch, CCEvent * pEvent)=0;
+    virtual int ccTouchBegan(CCTouch * pTouch, CCEvent * pEvent)=0;
+    virtual int ccTouchMoved(CCTouch * pTouch, CCEvent * pEvent)=0;
     virtual void ccTouchEnded(CCTouch * pTouch, CCEvent * pEvent)=0;
     
     //if gesture is correctly recognized, cancel touch over other views (default: false)

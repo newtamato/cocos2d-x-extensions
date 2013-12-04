@@ -22,7 +22,7 @@ THE SOFTWARE.
 
 #include "CCGestureRecognizer.h"
 #include <cxxabi.h>
-#include "CCTapGestureRecognizer.h"
+//#include "CCTapGestureRecognizer.h"
 #include "cocos2d.h"
 using namespace cocos2d;
 USING_NS_CC;
@@ -49,7 +49,7 @@ void CCGestureRecognizer::setTarget(CCObject * tar, int sel)
 {
     target = tar;
     selector = sel;
-    printf("selector is %i",sel);
+   
 }
 
 //void CCGestureRecognizer::setTarget(CCObject * tar, SEL_CallFuncO sel)
@@ -108,9 +108,9 @@ void CCGestureRecognizer::gestureRecognized(CCObject * gesture)
 
     CCScriptEngineProtocol* pEngine = CCScriptEngineManager::sharedManager()->getScriptEngine();
     const char* name = typeid(gesture).name();
-    const char* classname = typeid(CCTap).name();
+//    const char* classname = typeid(CCTap).name();
 
-    printf("name is %s,%s",name,classname);
+//    printf("name is %s,%s",name,classname);
 
     pEngine->executeEvent(selector,"event",target);
 

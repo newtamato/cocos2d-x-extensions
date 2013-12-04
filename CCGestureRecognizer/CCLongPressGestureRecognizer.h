@@ -47,8 +47,8 @@ public:
     CREATE_FUNC(CCLongPressGestureRecognizer);
     void timerDidEnd(float dt);
     
-    virtual bool ccTouchBegan(CCTouch * pTouch, CCEvent * pEvent);
-    virtual void ccTouchMoved(CCTouch * pTouch, CCEvent * pEvent){};
+    virtual int ccTouchBegan(CCTouch * pTouch, CCEvent * pEvent);
+    virtual int ccTouchMoved(CCTouch * pTouch, CCEvent * pEvent){};
     virtual void ccTouchEnded(CCTouch * pTouch, CCEvent * pEvent);
 protected:
     CC_SYNTHESIZE(float, minimumPressDuration, MinimumPressDuration);
